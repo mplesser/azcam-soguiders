@@ -1,0 +1,4 @@
+OBSERVER Lesser   / Observers
+ORIGIN   UAITL    / Observatory
+DETECTOR STA3600A / Detector name
+PROJECT  VIRUS    / Project name
