@@ -9,7 +9,6 @@ import threading
 from azcam.console import azcam
 import azcam.shortcuts
 from azcam.displays.ds9display import Ds9Display
-from azcam_focus.focus import Focus
 from azcam.genpars import GenPars
 
 azcam.log("Loading azcam-soguiders environment")
@@ -38,14 +37,6 @@ azcam.log(f"Configuring console for {azcam.db.systemname}")
 display = Ds9Display()
 dthread = threading.Thread(target=display.initialize, args=[])
 dthread.start()  # thread just for speed
-
-# ****************************************************************
-# focus script
-# ****************************************************************
-focus = Focus()
-azcam.db.cli_cmds["focus"] = focus
-focus.focus_component = "telescope"
-focus.focus_type = "absolute"
 
 # ****************************************************************
 # try to connect to azcamserver

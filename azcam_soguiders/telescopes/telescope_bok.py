@@ -1,9 +1,9 @@
 # Contains the BokTCS class which defines the Bok telescope interface.
 
-import socket, sys, os
+import socket
 import azcam
 from azcam.header import Header
-from azcam.azcamserver.telescopes.telescope import Telescope
+from azcam.telescopes.telescope import Telescope
 
 
 class BokTCS(Telescope):
@@ -118,7 +118,9 @@ class BokTCS(Telescope):
             return ["WARNING", "telescope not enabled"]
 
         try:
-            command = self.Tserver.make_packet("REQUEST " + self.Tserver.keywords[Keyword])
+            command = self.Tserver.make_packet(
+                "REQUEST " + self.Tserver.keywords[Keyword]
+            )
         except KeyError:
             return ["ERROR", "Keyword %s not defined" % Keyword]
 
@@ -190,7 +192,12 @@ class BokTCS(Telescope):
 
         for key in self.header.get_all_keywords():
             t = self.header.get_type_string(self.Tserver.typestrings[key])
-            list1 = [key, self.Tserver.parse_keyword(key, h)[1], self.Tserver.comments[key], t]
+            list1 = [
+                key,
+                self.Tserver.parse_keyword(key, h)[1],
+                self.Tserver.comments[key],
+                t,
+            ]
             header.append(list1)
             # store value in Header
             self.header.set_keyword(list1[0], list1[1], list1[2], list1[3])
@@ -362,12 +369,20 @@ class BokTCS(Telescope):
 
             if not motion:
                 azcam.utils.log("Telescope reports it is STOPPED")
-                azcam.utils.log("Coords:", self.read_keyword("RA")[1], self.read_keyword("DEC")[1])
-                azcam.utils.log("Coords:", self.read_keyword("RA")[1], self.read_keyword("DEC")[1])
-                azcam.utils.log("Coords:", self.read_keyword("RA")[1], self.read_keyword("DEC")[1])
+                azcam.utils.log(
+                    "Coords:", self.read_keyword("RA")[1], self.read_keyword("DEC")[1]
+                )
+                azcam.utils.log(
+                    "Coords:", self.read_keyword("RA")[1], self.read_keyword("DEC")[1]
+                )
+                azcam.utils.log(
+                    "Coords:", self.read_keyword("RA")[1], self.read_keyword("DEC")[1]
+                )
                 return
             else:
-                azcam.utils.log("Coords:", self.read_keyword("RA")[1], self.read_keyword("DEC")[1])
+                azcam.utils.log(
+                    "Coords:", self.read_keyword("RA")[1], self.read_keyword("DEC")[1]
+                )
 
             time.sleep(0.1)
             cycle += 1  # not used for now
@@ -561,7 +576,9 @@ class TelcomServerInterface(object):
         """
 
         try:
-            reply = self.Socket.send(str.encode(command + "\r\n"))  # send command with terminator
+            reply = self.Socket.send(
+                str.encode(command + "\r\n")
+            )  # send command with terminator
         except:
             pass
 
@@ -602,7 +619,9 @@ class TelcomServerInterface(object):
             if keyword == "ROTANGLE":
                 ReplyLength = ReplyLength - 2
 
-        reply = telemetry[self.Offsets[keyword] - 1 : self.Offsets[keyword] + ReplyLength]
+        reply = telemetry[
+            self.Offsets[keyword] - 1 : self.Offsets[keyword] + ReplyLength
+        ]
 
         # parse RA and DEC specially
         if keyword == "RA":
