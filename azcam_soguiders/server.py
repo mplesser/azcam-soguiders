@@ -13,7 +13,7 @@ import azcam.shortcuts
 from azcam.cmdserver import CommandServer
 from azcam.genpars import GenPars
 from azcam.server import azcam
-from azcam.telescopes.telescope import Telescope
+from azcam.telescope import Telescope
 
 azcam.log("Loading azcam-soguiders environment")
 

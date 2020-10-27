@@ -8,7 +8,7 @@ from azcam_mag.tempcon_mag import TempConMag
 from azcam_mag.udpinterface import UDPinterface
 
 import azcam
-from azcam.instruments.instrument import Instrument
+from azcam.instrument import Instrument
 
 try:
     i = sys.argv.index("-broadcast")

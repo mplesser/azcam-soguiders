@@ -8,7 +8,7 @@ from azcam_mag.udpinterface import UDPinterface
 from azcam_soguiders.detectors import detector_ccd57
 
 import azcam
-from azcam.instruments.instrument import Instrument
+from azcam.instrument import Instrument
 
 try:
     i = sys.argv.index("-broadcast")
