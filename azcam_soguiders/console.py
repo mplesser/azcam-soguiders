@@ -8,7 +8,7 @@ import threading
 
 from azcam.console import azcam
 import azcam.shortcuts
-from azcam.displays.ds9display import Ds9Display
+from azcam_ds9.ds9display import Ds9Display
 from azcam.genpars import GenPars
 
 azcam.log("Loading azcam-soguiders environment")

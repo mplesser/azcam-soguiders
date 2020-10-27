@@ -9,7 +9,7 @@ import subprocess
 from azcam.server import azcam
 from azcam.genpars import GenPars
 import azcam.shortcuts
-from azcam.displays.ds9display import Ds9Display
+from azcam_ds9.ds9display import Ds9Display
 from azcam.telescopes.telescope import Telescope
 from azcam.cmdserver import CommandServer
 import azcam.monitorinterface
