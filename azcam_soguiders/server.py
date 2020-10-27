@@ -1,18 +1,19 @@
 # azcam server app for ITL detchar systems
 
-import os
-import sys
-import importlib
 import datetime
+import importlib
+import os
 import subprocess
+import sys
 
-from azcam.server import azcam
-from azcam.genpars import GenPars
-import azcam.shortcuts
 from azcam_ds9.ds9display import Ds9Display
-from azcam.telescopes.telescope import Telescope
-from azcam.cmdserver import CommandServer
+
 import azcam.monitorinterface
+import azcam.shortcuts
+from azcam.cmdserver import CommandServer
+from azcam.genpars import GenPars
+from azcam.server import azcam
+from azcam.telescopes.telescope import Telescope
 
 azcam.log("Loading azcam-soguiders environment")
 
@@ -113,9 +114,9 @@ from azcam.webserver.web_server import WebServer
 
 webserver = WebServer()
 
-import azcam_webobs
 import azcam_exptool
 import azcam_status
+import azcam_webobs
 
 webserver.start()
 

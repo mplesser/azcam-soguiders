@@ -1,6 +1,7 @@
 # Starts guider.tcl
 
-import os, subprocess
+import os
+import subprocess
 
 ScopeName = "notel"
 GuiderName = "itlguider"
