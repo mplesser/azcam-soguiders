@@ -3,6 +3,14 @@ from setuptools import find_packages, setup
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+requirements = [
+    "ipython",
+    "azcam",
+    "azcam-mag",
+    "azcam-ds9",
+]
+
+
 setup(
     name="azcam-soguiders",
     version="20.1",
@@ -13,5 +21,5 @@ setup(
     keywords="python parameters",
     packages=find_packages(),
     zip_safe=False,
-    install_requires=["azcam"],
+    install_requires=requirements,
 )
