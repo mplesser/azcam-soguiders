@@ -6,6 +6,13 @@ import os
 import subprocess
 import sys
 
+from azcam_ds9.ds9display import Ds9Display
+from azcam_mag.controller_mag import ControllerMag
+from azcam_mag.exposure_mag import ExposureMag
+from azcam_mag.tempcon_mag import TempConMag
+from azcam_mag.udpinterface import UDPinterface
+from azcam_soguiders.detectors import detector_ccd57
+
 import azcam
 import azcam.monitorinterface
 import azcam.shortcuts
@@ -14,12 +21,6 @@ from azcam.genpars import GenPars
 from azcam.instrument import Instrument
 from azcam.server import azcam
 from azcam.telescope import Telescope
-from azcam_ds9.ds9display import Ds9Display
-from azcam_mag.controller_mag import ControllerMag
-from azcam_mag.exposure_mag import ExposureMag
-from azcam_mag.tempcon_mag import TempConMag
-from azcam_mag.udpinterface import UDPinterface
-from azcam_soguiders.detectors import detector_ccd57
 
 azcam.log("Loading azcam-soguiders environment")
 
