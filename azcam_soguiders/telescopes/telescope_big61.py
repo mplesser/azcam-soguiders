@@ -5,7 +5,7 @@ import socket
 import sys
 
 import azcam
-from azcam.header import Header
+from azcam.system import System
 from azcam.telescope import Telescope
 
 
