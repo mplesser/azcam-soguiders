@@ -22,8 +22,6 @@ from azcam_mag.tempcon_mag import TempConMag
 from azcam_mag.udpinterface import UDPinterface
 from azcam_soguiders.detectors import detector_ccd57
 
-azcam.log("Loading azcam-soguiders environment")
-
 # ****************************************************************
 # parse command line arguments
 # ****************************************************************

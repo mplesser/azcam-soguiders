@@ -12,17 +12,13 @@ import azcam.shortcuts
 from azcam.console import azcam
 from azcam.genpars import GenPars
 
-azcam.log("Loading azcam-soguiders environment")
-
 # ****************************************************************
 # files and folders
 # ****************************************************************
 azcam.db.systemname = "soguiders"
 azcam.db.systemfolder = os.path.dirname(__file__)
 azcam.db.datafolder = azcam.db.systemfolder
-azcam.db.parfile = os.path.join(
-    azcam.db.datafolder, f"parameters_{azcam.db.systemname}.ini"
-)
+azcam.db.parfile = os.path.join(azcam.db.datafolder, f"parameters_{azcam.db.systemname}.ini")
 
 # ****************************************************************
 # start logging
