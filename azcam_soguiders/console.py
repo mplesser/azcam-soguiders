@@ -18,7 +18,9 @@ from azcam.genpars import GenPars
 azcam.db.systemname = "soguiders"
 azcam.db.systemfolder = os.path.dirname(__file__)
 azcam.db.datafolder = azcam.db.systemfolder
-azcam.db.parfile = os.path.join(azcam.db.datafolder, f"parameters_{azcam.db.systemname}.ini")
+azcam.db.parfile = os.path.join(
+    azcam.db.datafolder, f"parameters_{azcam.db.systemname}.ini"
+)
 
 # ****************************************************************
 # start logging
@@ -38,7 +40,7 @@ dthread.start()  # thread just for speed
 # ****************************************************************
 # try to connect to azcamserver
 # ****************************************************************
-connected = azcam.api.serverconn.connect(port=2412)
+connected = azcam.api.server.connect(port=2412)
 if connected:
     azcam.log("Connected to azcamserver")
 else:
