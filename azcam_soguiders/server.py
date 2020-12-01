@@ -67,10 +67,8 @@ azcam.db.systemname = "soguiders"
 azcam.db.rootfolder = os.path.abspath(os.path.dirname(__file__))
 azcam.db.rootfolder = os.path.normpath(azcam.db.rootfolder).replace("\\", "/")
 azcam.db.systemfolder = os.path.dirname(__file__)
-azcam.db.projectfolder = os.path.join(azcam.db.systemfolder, azcam.db.systemname)
 azcam.db.datafolder = azcam.db.systemfolder
 azcam.db.systemfolder = azcam.utils.fix_path(azcam.db.systemfolder)
-azcam.db.projectfolder = azcam.utils.fix_path(azcam.db.projectfolder)
 azcam.db.datafolder = azcam.utils.fix_path(azcam.db.datafolder)
 
 # ****************************************************************
@@ -119,7 +117,9 @@ azcam.log("Using guide camera:", guider_address, guider_port)
 # ****************************************************************
 controller = ControllerMag()
 controller.camserver.set_server(guider_address, guider_port)
-controller.timing_file = os.path.join(azcam.db.datafolder, "dspcode", "dspcode", "gcam_ccd57.s")
+controller.timing_file = os.path.join(
+    azcam.db.datafolder, "dspcode", "dspcode", "gcam_ccd57.s"
+)
 
 # ****************************************************************
 # instrument
