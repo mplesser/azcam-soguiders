@@ -8,12 +8,13 @@ import sys
 
 from azcam.server import azcam
 import azcam
-import azcam.monitorinterface
+from azcam.monitorinterface import MonitorInterface
 import azcam.shortcuts
 from azcam.cmdserver import CommandServer
 from azcam.genpars import GenPars
 from azcam.instrument import Instrument
 from azcam.telescope import Telescope
+from azcam.webserver.web_server import WebServer
 
 from azcam_ds9.ds9display import Ds9Display
 from azcam_mag.controller_mag import ControllerMag
@@ -21,6 +22,9 @@ from azcam_mag.exposure_mag import ExposureMag
 from azcam_mag.tempcon_mag import TempConMag
 from azcam_mag.udpinterface import UDPinterface
 from azcam_soguiders.detectors import detector_ccd57
+import azcam_exptool
+import azcam_status
+import azcam_webobs
 
 # ****************************************************************
 # parse command line arguments
@@ -178,20 +182,17 @@ azcam.utils.curdir(wd)
 # ****************************************************************
 # web server
 # ****************************************************************
-from azcam.webserver.web_server import WebServer
-
 webserver = WebServer()
-
-import azcam_exptool
-import azcam_status
-import azcam_webobs
+azcam_exptool.load()
+azcam_status.load()
+azcam_webobs.load()
 
 webserver.start()
 
 # ****************************************************************
 # azcammonitor
 # ****************************************************************
-monitor = azcam.monitorinterface.MonitorInterface()
+monitor = MonitorInterface()
 monitor.proc_path = "c:/azcam/azcam_soguiders/bin/restart_server.bat"
 monitor.register()
 
