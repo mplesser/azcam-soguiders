@@ -23,7 +23,7 @@ class BokTCS(Telescope):
         # telescope header object
         self.header = Header("Telescope")
         azcam.utils.set_header("telescope", self.header, 3)
-        self.use_bokpop = 1
+        self.use_bokpop = 0
         self.Name = "bok"
         self.enabled = 0
         self.initialized = 0
