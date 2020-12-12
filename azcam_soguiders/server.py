@@ -121,9 +121,7 @@ azcam.log("Using guide camera:", guider_address, guider_port)
 # ****************************************************************
 controller = ControllerMag()
 controller.camserver.set_server(guider_address, guider_port)
-controller.timing_file = os.path.join(
-    azcam.db.datafolder, "dspcode", "dspcode", "gcam_ccd57.s"
-)
+controller.timing_file = os.path.join(azcam.db.datafolder, "dspcode", "dspcode", "gcam_ccd57.s")
 
 # ****************************************************************
 # instrument
@@ -146,9 +144,9 @@ exposure.image.filetype = azcam.db.filetypes[filetype]
 exposure.display_image = 1
 exposure.image.remote_imageserver_flag = 0
 imagename = os.path.join(azcam.db.datafolder, "soguider", "image.bin")
-exposure.filename.set_name(imagename)
-exposure.filename.test_image = 0
-# exposure.filename.root = "image"
+exposure.set_name(imagename)
+exposure.test_image = 0
+# exposure.root = "image"
 exposure.display_image = 0
 exposure.image.make_lockfile = 1
 
