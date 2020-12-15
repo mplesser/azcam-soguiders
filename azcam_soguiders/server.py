@@ -14,7 +14,7 @@ from azcam.cmdserver import CommandServer
 from azcam.genpars import GenPars
 from azcam.instrument import Instrument
 from azcam.telescope import Telescope
-from azcam.webserver.web_server import WebServer
+from azcam_webserver.web_server import WebServer
 
 from azcam_ds9.ds9display import Ds9Display
 from azcam_mag.controller_mag import ControllerMag
