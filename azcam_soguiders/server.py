@@ -1,20 +1,19 @@
 # azcam server app for ITL detchar systems
 
 import datetime
-import importlib
 import os
 import subprocess
 import sys
 
-from azcam.server import azcam
 import azcam
+import azcam.server
 import azcam.shortcuts
 from azcam.cmdserver import CommandServer
 from azcam.genpars import GenPars
 from azcam.instrument import Instrument
 from azcam.telescope import Telescope
 from azcam_webserver.web_server import WebServer
-from azcam_monitor.monitorinterface import MonitorInterface
+from azcam_monitor.monitorinterface import AzCamMonitorInterface
 from azcam_ds9.ds9display import Ds9Display
 from azcam_mag.controller_mag import ControllerMag
 from azcam_mag.exposure_mag import ExposureMag
@@ -120,7 +119,9 @@ azcam.log("Using guide camera:", guider_address, guider_port)
 # ****************************************************************
 controller = ControllerMag()
 controller.camserver.set_server(guider_address, guider_port)
-controller.timing_file = os.path.join(azcam.db.datafolder, "dspcode", "dspcode", "gcam_ccd57.s")
+controller.timing_file = os.path.join(
+    azcam.db.datafolder, "dspcode", "dspcode", "gcam_ccd57.s"
+)
 
 # ****************************************************************
 # instrument
@@ -189,7 +190,7 @@ webserver.start()
 # ****************************************************************
 # azcammonitor
 # ****************************************************************
-monitor = MonitorInterface()
+monitor = AzCamMonitorInterface()
 monitor.proc_path = "c:/azcam/azcam_soguiders/bin/restart_server.bat"
 monitor.register()
 
