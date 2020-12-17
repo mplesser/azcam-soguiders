@@ -9,7 +9,6 @@ import azcam
 import azcam.server
 import azcam.shortcuts
 from azcam.cmdserver import CommandServer
-from azcam.genpars import GenPars
 from azcam.instrument import Instrument
 from azcam.telescope import Telescope
 from azcam_webserver.web_server import WebServer
@@ -119,9 +118,7 @@ azcam.log("Using guide camera:", guider_address, guider_port)
 # ****************************************************************
 controller = ControllerMag()
 controller.camserver.set_server(guider_address, guider_port)
-controller.timing_file = os.path.join(
-    azcam.db.datafolder, "dspcode", "dspcode", "gcam_ccd57.s"
-)
+controller.timing_file = os.path.join(azcam.db.datafolder, "dspcode", "dspcode", "gcam_ccd57.s")
 
 # ****************************************************************
 # instrument
@@ -171,10 +168,9 @@ azcam.api.exposure.objects_reset.remove("telescope")
 # read par file
 # ****************************************************************
 parfile = os.path.join(azcam.db.datafolder, f"parameters_soguiders.ini")
-genpars = GenPars()
-pardict = genpars.parfile_read(parfile)["azcamserver"]
+pardict = azcam.api.config.parfile_read(parfile)["azcamserver"]
 azcam.utils.update_pars(0, pardict)
-wd = genpars.get_par(pardict, "wd", "default")
+wd = azcam.api.config.get_par(pardict, "wd", "default")
 azcam.utils.curdir(wd)
 
 # ****************************************************************
