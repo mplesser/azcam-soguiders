@@ -7,7 +7,7 @@ import sys
 
 import azcam
 import azcam.server
-import azcam.shortcuts
+import azcam.shortcuts_server
 from azcam.cmdserver import CommandServer
 from azcam.instrument import Instrument
 from azcam.telescope import Telescope
@@ -136,8 +136,8 @@ tempcon = TempConMag()
 exposure = ExposureMag()
 # filetype = "FITS"
 filetype = "BIN"
-exposure.filetype = azcam.db.filetypes[filetype]
-exposure.image.filetype = azcam.db.filetypes[filetype]
+exposure.filetype = exposure.filetypes[filetype]
+exposure.image.filetype = exposure.filetypes[filetype]
 exposure.display_image = 1
 exposure.image.remote_imageserver_flag = 0
 imagename = os.path.join(azcam.db.datafolder, "soguider", "image.bin")
