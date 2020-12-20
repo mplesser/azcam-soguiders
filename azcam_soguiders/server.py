@@ -168,8 +168,8 @@ azcam.api.exposure.objects_reset.remove("telescope")
 # read par file
 # ****************************************************************
 parfile = os.path.join(azcam.db.datafolder, f"parameters_soguiders.ini")
-pardict = azcam.api.config.parfile_read(parfile)
-azcam.api.config.update_pars(0, pardict["azcamserver"])
+pardict = azcam.api.config.read_parfile(parfile)
+azcam.api.config.update_pars(0, "azcamserver")
 
 # ****************************************************************
 # web server

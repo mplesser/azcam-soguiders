@@ -17,7 +17,7 @@ from azcam_ds9.ds9display import Ds9Display
 azcam.db.systemname = "soguiders"
 azcam.db.systemfolder = os.path.dirname(__file__)
 azcam.db.datafolder = azcam.db.systemfolder
-azcam.db.parfile = os.path.join(azcam.db.datafolder, f"parameters_{azcam.db.systemname}.ini")
+parfile = os.path.join(azcam.db.datafolder, f"parameters_{azcam.db.systemname}.ini")
 
 # ****************************************************************
 # start logging
@@ -46,8 +46,8 @@ else:
 # ****************************************************************
 # read par file
 # ****************************************************************
-pardict = azcam.api.config.parfile_read(azcam.db.parfile)
-azcam.api.config.update_pars(0, pardict["azcamconsole"])
+pardict = azcam.api.config.read_parfile(parfile)
+azcam.api.config.update_pars(0, "azcamconsole")
 
 # ****************************************************************
 # finish
