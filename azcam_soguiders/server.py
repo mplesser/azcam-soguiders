@@ -10,7 +10,6 @@ import azcam.server
 import azcam.shortcuts_server
 from azcam.cmdserver import CommandServer
 from azcam.instrument import Instrument
-from azcam.telescope import Telescope
 from azcam_webserver.web_server import WebServer
 from azcam_monitor.monitorinterface import AzCamMonitorInterface
 from azcam_ds9.ds9display import Ds9Display
@@ -156,13 +155,6 @@ exposure.set_detpars(detector_ccd57)
 # define display
 # ****************************************************************
 display = Ds9Display()
-
-# ****************************************************************
-# define telescope
-# ****************************************************************
-telescope = Telescope()
-azcam.api.exposure.objects_init.remove("telescope")
-azcam.api.exposure.objects_reset.remove("telescope")
 
 # ****************************************************************
 # read par file
