@@ -20,7 +20,8 @@ from azcam_mag.udpinterface import UDPinterface
 from azcam_soguiders.detectors import detector_ccd57
 import azcam_exptool
 import azcam_status
-import azcam_webobs
+import azcam_observe.webobs
+
 
 # ****************************************************************
 # parse command line arguments
