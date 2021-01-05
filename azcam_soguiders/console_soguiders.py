@@ -20,6 +20,11 @@ azcam.db.datafolder = azcam.db.systemfolder
 parfile = os.path.join(azcam.db.datafolder, f"parameters_{azcam.db.systemname}.ini")
 
 # ****************************************************************
+# add folders to search path
+# ****************************************************************
+azcam.utils.add_searchfolder(azcam.db.systemfolder, 0)
+
+# ****************************************************************
 # start logging
 # ****************************************************************
 tt = datetime.datetime.strftime(datetime.datetime.now(), "%d%b%y_%H%M%S")

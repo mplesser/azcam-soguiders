@@ -17,11 +17,9 @@ from azcam_mag.controller_mag import ControllerMag
 from azcam_mag.exposure_mag import ExposureMag
 from azcam_mag.tempcon_mag import TempConMag
 from azcam_mag.udpinterface import UDPinterface
-from azcam_soguiders.detectors import detector_ccd57
 import azcam_exptool
 import azcam_status
 import azcam_observe.webobs
-
 
 # ****************************************************************
 # parse command line arguments
@@ -71,6 +69,11 @@ azcam.db.systemfolder = os.path.dirname(__file__)
 azcam.db.datafolder = azcam.db.systemfolder
 azcam.db.systemfolder = azcam.utils.fix_path(azcam.db.systemfolder)
 azcam.db.datafolder = azcam.utils.fix_path(azcam.db.datafolder)
+
+# ****************************************************************
+# add folders to search path
+# ****************************************************************
+azcam.utils.add_searchfolder(azcam.db.systemfolder, 0)
 
 # ****************************************************************
 # enable logging
@@ -141,7 +144,7 @@ exposure.image.filetype = exposure.filetypes[filetype]
 exposure.display_image = 1
 exposure.image.remote_imageserver_flag = 0
 imagename = os.path.join(azcam.db.datafolder, "soguider", "image.bin")
-exposure.set_name(imagename)
+exposure.image.filename = imagename
 exposure.test_image = 0
 # exposure.root = "image"
 exposure.display_image = 0
@@ -150,6 +153,8 @@ exposure.image.make_lockfile = 1
 # ****************************************************************
 # detector
 # ****************************************************************
+from detectors import detector_ccd57
+
 exposure.set_detpars(detector_ccd57)
 
 # ****************************************************************
@@ -170,7 +175,7 @@ azcam.api.config.update_pars(0, "azcamserver")
 webserver = WebServer()
 azcam_exptool.load()
 azcam_status.load()
-azcam_webobs.load()
+azcam_observe.webobs.load()
 
 webserver.start()
 

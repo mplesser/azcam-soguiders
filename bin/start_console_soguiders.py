@@ -6,6 +6,11 @@ Usage: Execute this file from File Explorer
 
 import os
 import sys
+from pathlib import Path, PurePosixPath
+
+rootfolder = Path(__file__).resolve().parent.parent
+rootfolder = rootfolder / "azcam_soguiders"
+rootfolder = str(PurePosixPath(rootfolder))
 
 # select which python to use (virtual environments)
 python = "ipython.exe"
@@ -15,12 +20,12 @@ interactive = "-i"  # "-i" or ""
 if len(sys.argv) > 1:
     arguments = sys.argv[1:]
 else:
-    # arguments = ["-system VIRUS -data \data"]
     arguments = [""]
 
 profile = "azcamconsole"
 
-import_command = f"import azcam_soguiders.console; from azcam.cli import *"
+imports = f"import sys; sys.path.append('{rootfolder}')"
+import_command = f"{imports};import console_soguiders; from azcam.cli import *"
 
 # execute
 cl = (
