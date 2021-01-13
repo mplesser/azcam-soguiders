@@ -6,7 +6,7 @@ This repository contains *azcam-soguiders* *azcam* environment. It contains code
 
 `git clone https://github.com/uaitl/azcam-soguiders`
 
-For Windows systems this code is usually cloned into `c:\azcam\azcam-soguiders`.
+For Windows systems the normal destination is `c:\azcam\azcam-soguiders`.
 
 ## Code
 
