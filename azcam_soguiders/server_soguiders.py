@@ -59,6 +59,7 @@ if subsystem == "menu":
     subsystem = azcam.utils.show_menu(menu_options)
 
 azcam.db.systemname = "soguiders"
+azcam.db.servermode = subsystem
 
 # ****************************************************************
 # define folders for system and optionally a project
@@ -175,11 +176,9 @@ azcam.api.config.update_pars(0, "azcamserver")
 # web server
 # ****************************************************************
 webserver = WebServer()
+webserver.start()
 azcam_exptool.load()
 azcam_status.load()
-azcam_observe.webobs.load()
-
-webserver.start()
 
 # ****************************************************************
 # azcammonitor
