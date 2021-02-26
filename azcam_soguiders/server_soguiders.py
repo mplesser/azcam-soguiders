@@ -164,8 +164,8 @@ display = Ds9Display()
 # read par file
 # ****************************************************************
 parfile = os.path.join(azcam.db.datafolder, f"parameters_soguiders.ini")
-pardict = azcam.db.config.read_parfile(parfile)
-azcam.db.config.update_pars(0, "azcamserver")
+pardict = azcam.db.params.read_parfile(parfile)
+azcam.db.params.update_pars(0, "azcamserver")
 
 # ****************************************************************
 # web server
