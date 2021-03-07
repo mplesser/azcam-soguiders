@@ -248,7 +248,6 @@ else:
     subprocess.Popen(cmd, cwd=".")
 
 # ****************************************************************
-# Debug code
+# finish
 # ****************************************************************
-if 0:
-    pass
+azcam.log("Configuration complete")
