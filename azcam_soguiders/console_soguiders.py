@@ -17,7 +17,7 @@ from azcam_ds9.ds9display import Ds9Display
 azcam.db.systemname = "soguiders"
 azcam.db.systemfolder = os.path.dirname(__file__)
 azcam.db.datafolder = azcam.db.systemfolder
-parfile = os.path.join(azcam.db.datafolder, f"parameters_{azcam.db.systemname}.ini")
+parfile = os.path.join(azcam.db.datafolder, f"parameters_console_{azcam.db.systemname}.ini")
 
 # ****************************************************************
 # add folders to search path
