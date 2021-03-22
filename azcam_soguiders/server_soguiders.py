@@ -85,16 +85,6 @@ azcam.db.logger.start_logging()
 azcam.log(f"Configuring {azcam.db.systemname}")
 
 # ****************************************************************
-# define and start command server
-# ****************************************************************
-cmdserver = CommandServer()
-cmdserver.port = 2402
-azcam.log(f"Starting cmdserver - listening on port {cmdserver.port}")
-# cmdserver.welcome_message = "Welcome - azcam-itl server"
-cmdserver.start()
-
-
-# ****************************************************************
 # broadcast:
 # ****************************************************************
 guider_address = "guider2"
@@ -166,6 +156,15 @@ display = Ds9Display()
 parfile = os.path.join(azcam.db.datafolder, f"parameters_soguiders.ini")
 pardict = azcam.db.params.read_parfile(parfile)
 azcam.db.params.update_pars(0, "azcamserver")
+
+# ****************************************************************
+# define and start command server
+# ****************************************************************
+cmdserver = CommandServer()
+cmdserver.port = 2402
+azcam.log(f"Starting cmdserver - listening on port {cmdserver.port}")
+# cmdserver.welcome_message = "Welcome - azcam-itl server"
+cmdserver.start()
 
 # ****************************************************************
 # web server
