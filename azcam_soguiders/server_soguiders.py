@@ -171,7 +171,7 @@ cmdserver.start()
 # ****************************************************************
 webserver = WebServer()
 webserver.start()
-azcam_exptool.load()
+# azcam_exptool.load()
 azcam_status.load()
 
 # ****************************************************************
