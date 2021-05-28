@@ -861,8 +861,8 @@ proc write_azcam { cid cmd checkstat } {
 proc get_detpars { } {
      global detcols detrows plog azcamsock
      $plog "GetImageSize"
-     scan [write_azcam $azcamsock "exposure.get_par imagesizex" yes] %s%s stat Ncols
-     scan [write_azcam $azcamsock "exposure.get_par imagesizey" yes] %s%s stat Nrows
+     scan [write_azcam $azcamsock "params.get_par imagesizex" yes] %s%s stat Ncols
+     scan [write_azcam $azcamsock "params.get_par imagesizey" yes] %s%s stat Nrows
      set detcols [string range $Ncols 0 "end"]
      set detrows [string range $Nrows 0 "end"]
 }
@@ -3038,7 +3038,7 @@ proc peccompute { } {
 proc exposurestatus { } {
 
      global azcamsock camstat
-     set cmd "exposure.get_par exposureflag"
+     set cmd "params.get_par exposureflag"
      set stat {empty}
      scan [ write_azcam $azcamsock $cmd yes] %s%s resp stat
      if { $resp == "OK" } {
