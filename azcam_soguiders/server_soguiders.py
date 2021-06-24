@@ -1,6 +1,5 @@
 # azcam server app for ITL detchar systems
 
-import datetime
 import os
 import subprocess
 import sys
@@ -79,9 +78,8 @@ azcam.utils.add_searchfolder(azcam.db.systemfolder, 0)
 # ****************************************************************
 # enable logging
 # ****************************************************************
-tt = datetime.datetime.strftime(datetime.datetime.now(), "%d%b%y_%H%M%S")
-azcam.db.logger.logfile = os.path.join(azcam.db.datafolder, "logs", f"server_{tt}.log")
-azcam.db.logger.start_logging()
+logfile = os.path.join(azcam.db.datafolder, "logs", "server.log")
+azcam.db.logger.start_logging(logfile=logfile)
 azcam.log(f"Configuring {azcam.db.systemname}")
 
 # ****************************************************************
@@ -112,9 +110,7 @@ azcam.log("Using guide camera:", guider_address, guider_port)
 # ****************************************************************
 controller = ControllerMag()
 controller.camserver.set_server(guider_address, guider_port)
-controller.timing_file = os.path.join(
-    azcam.db.datafolder, "dspcode", "dspcode", "gcam_ccd57.s"
-)
+controller.timing_file = os.path.join(azcam.db.datafolder, "dspcode", "dspcode", "gcam_ccd57.s")
 
 # ****************************************************************
 # instrument
