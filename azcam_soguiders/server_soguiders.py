@@ -16,9 +16,6 @@ from azcam_mag.controller_mag import ControllerMag
 from azcam_mag.exposure_mag import ExposureMag
 from azcam_mag.tempcon_mag import TempConMag
 from azcam_mag.udpinterface import UDPinterface
-import azcam_exptool
-import azcam_status
-import azcam_observe.webobs
 
 # ****************************************************************
 # parse command line arguments
