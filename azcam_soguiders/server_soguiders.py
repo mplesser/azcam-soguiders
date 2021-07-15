@@ -7,8 +7,8 @@ import sys
 import azcam
 import azcam.server
 import azcam.shortcuts_server
-from azcam.cmdserver import CommandServer
-from azcam.instrument import Instrument
+from azcam.tools.cmdserver import CommandServer
+from azcam.tools.instrument import Instrument
 from azcam_flaskserver.flask_server import WebServer
 from azcam_monitor.monitorinterface import AzCamMonitorInterface
 from azcam_ds9.ds9display import Ds9Display
@@ -107,7 +107,9 @@ azcam.log("Using guide camera:", guider_address, guider_port)
 # ****************************************************************
 controller = ControllerMag()
 controller.camserver.set_server(guider_address, guider_port)
-controller.timing_file = os.path.join(azcam.db.datafolder, "dspcode", "dspcode", "gcam_ccd57.s")
+controller.timing_file = os.path.join(
+    azcam.db.datafolder, "dspcode", "dspcode", "gcam_ccd57.s"
+)
 
 # ****************************************************************
 # instrument
