@@ -44,7 +44,7 @@ azcam.tools.load_console_tools()
 # ****************************************************************
 # try to connect to azcamserver
 # ****************************************************************
-server = azcam.get_tools("server")
+server = azcam.db.server
 connected = server.connect(port=2412)
 if connected:
     azcam.log("Connected to azcamserver")
