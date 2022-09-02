@@ -1,0 +1,58 @@
+New in version 4.12: 
+- Bok instrument rotator is not read when run as 90primeguider.
+- Link to new Python AzCamImageWriter utility.
+- Updated to new AzCam syntax, cured problem when guide box is near edge 
+of image, and modified to start AzCamImageWriter from within guider.tcl
+  
+New in version 4.11: 
+- 150 character TCS is now the default.
+
+New in version 4.10:
+- Added capability for Periodic Error Correction (PEC).  This anticipates
+tracking errors based on the most recent cycle of corrections.  The cycle 
+period is generally that of the RA worm (at the 2.3m Bok telescope: 120 sec).
+PEC is enabled/disabled in the "Parameters" pulldown menu.
+  
+New in version 4.06:
+- Added capability for 150-character TCS at the Bok 2.3m.  This
+allows the monitoring of the IIS orientation and thus updating of the 
+coordinate system as the IIS is rotated to match the parallactic angle.
+
+New in version 4.05:
+- Modified with shortened paths and removing double sockets to AzCam
+- Modified to call GuiderFileServer.e directly (prev. GuiderFileServer.csh)
+- Updated to allow jogging of telescope during acquisitions
+- Reduced default flux limit and default stripcharts
+- Improved SHUTDOWN procedure.
+- Updated EXPOSE command syntax.
+
+New in version 4.04:
+
+- Implemented auto-sense x-y flipping of image to ensure that E is 
+always counterclockwise of N.  This assists in identifying star fields
+on finder charts.
+
+-------------------------------------------------------------------
+
+New in version 4.03:
+
+- Corrected bug in up/down/left/right nudging of telescope
+- Added option to NOT recenter guide box on initial exposure
+
+-------------------------------------------------------------------
+
+New in version 4.02:
+
+- Support for Linux client-side operation (auto-senses operating system)
+- Improved visibility of guide indicator lights
+- Stripchart for guide star flux monitoring
+
+-------------------------------------------------------------------
+
+New in version 3.95:
+
+- Case-insensitive command-line parameters for telescope and camera.
+- Improved error recovery.
+- Ability to nudge star up/down/left/right by 1-4 pixels using pushbuttons, whether guiding or not.
+- Correct handling of MMT rotator motions.
+- This help utility!

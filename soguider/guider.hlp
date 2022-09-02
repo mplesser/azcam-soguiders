@@ -1,0 +1,20 @@
+General:
+
+This version supports remote guiding within a Microsoft/Samba local network
+and AzCam's immediate return of Error message strings
+
+Configuration philosophy
+
+The telescope and camera environment is set by command-line parameters which
+index into the scope.cfg and camera.cfg files to derive the appropriate setup
+parameters. Example for the "90guider" AZCAM software running at the 2.3m Bok
+telescope:
+
+ "guider.tcl bok 90guider"
+
+If neither command-line parameter exists, the telescope is set to "notel" and
+the guider to "noazcam" To disable AZCAM server communication, set camera
+index to "noazcam", e.g., "guider.tcl bok noazcam"
+
+Note that the path to code and the written .bin images is designated through
+the "Start in" parameter of the icon.

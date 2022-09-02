@@ -1,0 +1,6 @@
+lan='Local Area Connection'
+ip='10.80.0.223'
+subnetmask='255.255.252.0'
+gateway='128.196.208.1'
+dns1='128.196.208.2'
+dns2='128.196.209.2'
