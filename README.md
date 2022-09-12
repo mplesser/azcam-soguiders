@@ -4,13 +4,13 @@ This repository contains *azcam-soguiders* *azcam* environment. It contains code
 
 ## Installation
 
-Download the code (usually into the *azcam* root folder such as `c:\azcam`) and install via  poetry.
+Download the code (usually into the *azcam* root folder such as `c:\azcam`) and install.
 
 ```shell
 cd /azcam
 git clone https://github.com/mplesser/azcam-soguiders
 cd azcam-soguiders
-poetry install
+pip install -e .
 ```
 
 ## Code
