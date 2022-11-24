@@ -9,11 +9,11 @@ import azcam.server
 import azcam.shortcuts
 from azcam.tools.cmdserver import CommandServer
 from azcam.tools.instrument import Instrument
-from azcam_ds9.ds9display import Ds9Display
-from azcam_mag.controller_mag import ControllerMag
-from azcam_mag.exposure_mag import ExposureMag
-from azcam_mag.tempcon_mag import TempConMag
-from azcam_mag.udpinterface import UDPinterface
+from azcam.tools.ds9.ds9display import Ds9Display
+from azcam.tools.mag.controller_mag import ControllerMag
+from azcam.tools.mag.exposure_mag import ExposureMag
+from azcam.tools.mag.tempcon_mag import TempConMag
+from azcam.tools.mag.udpinterface import UDPinterface
 
 # ****************************************************************
 # parse command line arguments

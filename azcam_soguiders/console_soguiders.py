@@ -6,7 +6,7 @@ import threading
 
 import azcam
 import azcam.shortcuts
-from azcam_ds9.ds9display import Ds9Display
+from azcam.tools.ds9.ds9display import Ds9Display
 
 
 # ****************************************************************
