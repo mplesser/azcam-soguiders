@@ -7,7 +7,7 @@ import sys
 import azcam
 import azcam.server
 import azcam.shortcuts
-from azcam.tools.cmdserver import CommandServer
+from azcam.cmdserver import CommandServer
 from azcam.tools.instrument import Instrument
 from azcam.tools.ds9display import Ds9Display
 from azcam.tools.mag.controller_mag import ControllerMag
@@ -144,8 +144,8 @@ display = Ds9Display()
 # read par file
 # ****************************************************************
 parfile = os.path.join(azcam.db.datafolder, f"parameters_soguiders.ini")
-azcam.db.tools["parameters"].read_parfile(parfile)
-azcam.db.tools["parameters"].update_pars(0, "azcamserver")
+azcam.db.parameters.read_parfile(parfile)
+azcam.db.parameters.update_pars(0, "azcamserver")
 
 # ****************************************************************
 # define and start command server
