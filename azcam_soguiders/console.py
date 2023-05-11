@@ -5,7 +5,7 @@ import os
 import threading
 
 import azcam
-import azcam.shortcuts
+import azcam_console.shortcuts
 from azcam.tools.ds9display import Ds9Display
 
 
@@ -34,7 +34,7 @@ dthread.start()  # thread just for speed
 # ****************************************************************
 # console tools
 # ****************************************************************
-from azcam.tools import create_console_tools
+from azcam_console.tools import create_console_tools
 create_console_tools()
 
 # ****************************************************************

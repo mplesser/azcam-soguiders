@@ -5,15 +5,15 @@ import subprocess
 import sys
 
 import azcam
-import azcam.server
-import azcam.shortcuts
-from azcam.cmdserver import CommandServer
+import azcam_server.server
+import azcam_server.shortcuts
+from azcam_server.cmdserver import CommandServer
 from azcam.tools.instrument import Instrument
 from azcam.tools.ds9display import Ds9Display
-from azcam.tools.mag.controller_mag import ControllerMag
-from azcam.tools.mag.exposure_mag import ExposureMag
-from azcam.tools.mag.tempcon_mag import TempConMag
-from azcam.tools.mag.udpinterface import UDPinterface
+from azcam_server.tools.mag.controller_mag import ControllerMag
+from azcam_server.tools.mag.exposure_mag import ExposureMag
+from azcam_server.tools.mag.tempcon_mag import TempConMag
+from azcam_server.tools.mag.udpinterface import UDPinterface
 
 # ****************************************************************
 # parse command line arguments
