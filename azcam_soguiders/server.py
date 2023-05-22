@@ -8,8 +8,8 @@ import azcam
 import azcam_server.server
 import azcam_server.shortcuts
 from azcam_server.cmdserver import CommandServer
-from azcam.tools.instrument import Instrument
-from azcam.tools.ds9display import Ds9Display
+from azcam_server.tools.instrument import Instrument
+from azcam_server.tools.ds9display import Ds9Display
 from azcam_server.tools.mag.controller_mag import ControllerMag
 from azcam_server.tools.mag.exposure_mag import ExposureMag
 from azcam_server.tools.mag.tempcon_mag import TempConMag
