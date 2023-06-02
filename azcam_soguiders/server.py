@@ -145,7 +145,7 @@ display = Ds9Display()
 # ****************************************************************
 parfile = os.path.join(azcam.db.datafolder, f"parameters_soguiders.ini")
 azcam.db.parameters.read_parfile(parfile)
-azcam.db.parameters.update_pars(0, "azcamserver")
+azcam.db.parameters.update_pars("azcamserver")
 
 # ****************************************************************
 # define and start command server
