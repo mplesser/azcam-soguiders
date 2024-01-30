@@ -1,6 +1,9 @@
 """
-azcamserver config for soguiders
+Setup method for soguiders azcamserver.
+Usage example:
+  python -i -m azcam_soguiders.server -- -system bigguider
 """
+
 
 import os
 import subprocess
@@ -17,34 +20,29 @@ from azcam_server.tools.mag.exposure_mag import ExposureMag
 from azcam_server.tools.mag.tempcon_mag import TempConMag
 from azcam_server.tools.mag.udpinterface import UDPinterface
 
-# ****************************************************************
-# parse command line arguments
-# ****************************************************************
-try:
-    i = sys.argv.index("-system")
-    subsystem = sys.argv[i + 1]
-except ValueError:
-    subsystem = "menu"
-    # subsystem = "soguiders"  # debug
-try:
-    i = sys.argv.index("-datafolder")
-    datafolder = sys.argv[i + 1]
-except ValueError:
-    datafolder = None
-try:
-    i = sys.argv.index("-broadcast")
-    BROADCAST = 1
-except ValueError:
-    BROADCAST = 0
-
 
 def setup():
-    global subsystem, datafolder, BROADCAST
+    # parse command line arguments
+    try:
+        i = sys.argv.index("-system")
+        subsystem = sys.argv[i + 1]
+    except ValueError:
+        subsystem = "menu"
+        # subsystem = "soguiders"  # debug
+    try:
+        i = sys.argv.index("-datafolder")
+        datafolder = sys.argv[i + 1]
+    except ValueError:
+        datafolder = None
+    try:
+        i = sys.argv.index("-broadcast")
+        BROADCAST = 1
+    except ValueError:
+        BROADCAST = 0
+
     azcam.db.datafolder = datafolder
 
-    # ****************************************************************
     # optionally select system with menu
-    # ****************************************************************
     menu_options = {
         "90primeguider": "90primeguider",
         "bigguider": "bigguider",
@@ -62,9 +60,7 @@ def setup():
     azcam.db.systemname = "soguiders"
     azcam.db.servermode = subsystem
 
-    # ****************************************************************
     # define folders for system and optionally a project
-    # ****************************************************************
     azcam.db.rootfolder = os.path.abspath(os.path.dirname(__file__))
     azcam.db.rootfolder = os.path.normpath(azcam.db.rootfolder).replace("\\", "/")
     azcam.db.systemfolder = os.path.dirname(__file__)
@@ -72,25 +68,21 @@ def setup():
     azcam.db.datafolder = os.path.join("/data", azcam.db.systemname)
     azcam.db.datafolder = azcam.utils.fix_path(azcam.db.datafolder)
 
-    # ****************************************************************
     # enable logging
-    # ****************************************************************
     logfile = os.path.join(azcam.db.datafolder, "logs", "server.log")
     azcam.db.logger.start_logging(logfile=logfile)
     azcam.log(f"Configuring {azcam.db.systemname}")
 
-    # ****************************************************************
     # broadcast:
-    # ****************************************************************
     guider_address = "bigag"
-    guider_port = 2425
+    guider_port = 2402
     if BROADCAST:
         udpobj = UDPinterface()
         reply = udpobj.get_ids()
         if reply == []:
             azcam.log("No systems responded to broadcast")
             guider_address = "guider2"
-            guider_port = 2405
+            guider_port = 2402
         for system in reply:
             tokens = system[0].split(" ")
             azcam.log(f"Found {tokens[2]} at ({tokens[4]}:{int(tokens[3])})")
@@ -101,28 +93,20 @@ def setup():
 
     azcam.log("Using guide camera:", guider_address, guider_port)
 
-    # ****************************************************************
     # controller
-    # ****************************************************************
     controller = ControllerMag()
     controller.camserver.set_server(guider_address, guider_port)
     controller.timing_file = os.path.join(
         azcam.db.datafolder, "dspcode", "dspcode", "gcam_ccd57.s"
     )
 
-    # ****************************************************************
     # instrument
-    # ****************************************************************
     instrument = Instrument()
 
-    # ****************************************************************
     # temperature controller
-    # ****************************************************************
     tempcon = TempConMag()
 
-    # ****************************************************************
     # exposure
-    # ****************************************************************
     exposure = ExposureMag()
     # filetype = "FITS"
     filetype = "BIN"
@@ -136,37 +120,27 @@ def setup():
     exposure.display_image = 0
     exposure.image.make_lockfile = 1
 
-    # ****************************************************************
     # detector
-    # ****************************************************************
     from azcam_soguiders.detectors import detector_ccd57
 
     exposure.set_detpars(detector_ccd57)
 
-    # ****************************************************************
     # define display
-    # ****************************************************************
     display = Ds9Display()
 
-    # ****************************************************************
     # read par file
-    # ****************************************************************
     parfile = os.path.join(azcam.db.datafolder, f"parameters_soguiders.ini")
     azcam.db.parameters.read_parfile(parfile)
     azcam.db.parameters.update_pars("azcamserver")
 
-    # ****************************************************************
     # define and start command server
-    # ****************************************************************
     cmdserver = CommandServer()
     cmdserver.port = 2402
     azcam.log(f"Starting cmdserver - listening on port {cmdserver.port}")
     # cmdserver.welcome_message = "Welcome - azcam-itl server"
     cmdserver.start()
 
-    # ****************************************************************
     # guider.tcl GUI
-    # ****************************************************************
     scope_names = {
         "90primeguider": "BOK",
         "bigguider": "BIG61",
@@ -229,19 +203,13 @@ def setup():
         if os.name == "posix":
             os.system(cmd)
         else:
-            subprocess.Popen(cmd, cwd=os.path.join(azcam.db.datafolder, "soguider"))
+            folder = os.path.join(azcam.db.datafolder, "soguider")
+            subprocess.Popen(cmd, cwd=folder)
 
-    # try to change window title
-    try:
-        ctypes.windll.kernel32.SetConsoleTitleW("azcamserver")
-    except Exception:
-        pass
-
-    # ****************************************************************
     # finish
-    # ****************************************************************
     azcam.log("Configuration complete")
 
 
+# start
 setup()
 from azcam.cli import *
