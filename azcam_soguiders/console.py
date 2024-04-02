@@ -47,7 +47,7 @@ def setup():
 
     # read par file
     azcam.db.parameters.read_parfile(parfile)
-    azcam.db.parameters.update_pars("azcamconsole")
+    azcam.db.parameters.update_pars()
 
     # finish
     azcam.log("Configuration complete")

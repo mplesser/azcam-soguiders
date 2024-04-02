@@ -131,7 +131,7 @@ def setup():
     # read par file
     parfile = os.path.join(azcam.db.datafolder, f"parameters_soguiders.ini")
     azcam.db.parameters.read_parfile(parfile)
-    azcam.db.parameters.update_pars("azcamserver")
+    azcam.db.parameters.update_pars()
 
     # define and start command server
     cmdserver = CommandServer()
