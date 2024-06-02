@@ -10,15 +10,15 @@ import sys
 
 import azcam
 import azcam.utils
-import azcam.server.server
-import azcam.server.shortcuts
-from azcam.server.cmdserver import CommandServer
-from azcam.server.tools.instrument import Instrument
-from azcam.server.tools.ds9display import Ds9Display
-from azcam.server.tools.mag.controller_mag import ControllerMag
-from azcam.server.tools.mag.exposure_mag import ExposureMag
-from azcam.server.tools.mag.tempcon_mag import TempConMag
-from azcam.server.tools.mag.udpinterface import UDPinterface
+import azcam.server
+import azcam.shortcuts
+from azcam.cmdserver import CommandServer
+from azcam.tools.instrument import Instrument
+from azcam.tools.ds9display import Ds9Display
+from azcam.tools.mag.controller_mag import ControllerMag
+from azcam.tools.mag.exposure_mag import ExposureMag
+from azcam.tools.mag.tempcon_mag import TempConMag
+from azcam.tools.mag.udpinterface import UDPinterface
 
 
 def setup():
