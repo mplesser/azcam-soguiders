@@ -127,6 +127,7 @@ def setup():
 
     # define display
     display = Ds9Display()
+    display.initialize()
 
     # read par file
     parfile = os.path.join(azcam.db.datafolder, f"parameters_soguiders.ini")

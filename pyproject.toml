@@ -1,7 +1,7 @@
 [project]
 name = "azcam-soguiders"
 version = "24.0"
-description = "Azcam extension for Steward Observatory ITL guider cameras"
+description = "Azcam environment for Steward Observatory ITL guider cameras"
 license = { file = "LICENSE" }
 readme = "README.md"
 requires-python = ">=3.10"
