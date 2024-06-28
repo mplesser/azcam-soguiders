@@ -138,7 +138,7 @@ def setup():
     cmdserver = CommandServer()
     cmdserver.port = 2402
     azcam.log(f"Starting cmdserver - listening on port {cmdserver.port}")
-    # cmdserver.welcome_message = "Welcome - azcam-itl server"
+    azcam.db.tools["api"].initialize_api()
     cmdserver.start()
 
     # guider.tcl GUI
