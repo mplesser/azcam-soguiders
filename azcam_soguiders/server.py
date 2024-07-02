@@ -22,6 +22,7 @@ from azcam.tools.mag.udpinterface import UDPinterface
 
 
 def setup():
+
     # parse command line arguments
     try:
         i = sys.argv.index("-system")
